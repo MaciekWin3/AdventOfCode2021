@@ -40,23 +40,15 @@ static long LanternFishCounter(int numberOfDays, byte fishNumber)
         afterTmp = 0;
         for (int j = 8; j >= 0; j--)
         {
-            if (j == 8)
+            if (j == 0 && fishes[j] != 0)
             {
-                beforeTmp = fishes[j];
-                fishes[j] = 0;
+                fishes[6] = fishes[6] + fishes[0];
+                fishes[8] = fishes[0];
+                fishes[0] = 0;
             }
-            else
-            {
-                if (j == 0 && fishes[j] != 0)
-                {
-                    fishes[6] = fishes[6] + fishes[0];
-                    fishes[8] = fishes[0];
-                    fishes[0] = 0;
-                }
-                afterTmp = fishes[j];
-                fishes[j] = beforeTmp;
-                beforeTmp = afterTmp;
-            }
+            afterTmp = fishes[j];
+            fishes[j] = beforeTmp;
+            beforeTmp = afterTmp;
         }
     }
 
